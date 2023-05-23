@@ -5,6 +5,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>All Users</title>
     <style>
+        .button {
+            margin-right: auto;
+            margin-left: 53px;
+        }
+
         table {
             border-collapse: collapse;
             width: 350px;
@@ -32,7 +37,7 @@
         <th>Age</th>
     </tr>
     </thead>
-    <tbody th:each="user : ${allUsers}">
+    <tbody th:each="user : ${users}">
     <tr>
         <td th:text="${user.name}"></td>
         <td th:text="${user.surname}"></td>
@@ -42,5 +47,19 @@
 </table>
 <br>
 <br>
+<form th:action="@{/update}" th:object="${users}" method="post">
+    <input type="button" value="Add" onclick="window.location.href = 'add'"/>
+    <button type="submit" class="button">Update</button>
+    <input th:formaction="@{/delete}" type="submit" value="Delete"/>
+    <select th:name="userId">
+        <option th:each="user : ${users}" th:value="${user.id}">
+            <tr>
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.surname}"></td>
+                <td th:text="${user.age}"></td>
+            </tr>
+        </option>
+    </select>
+</form>
 </body>
 </html>

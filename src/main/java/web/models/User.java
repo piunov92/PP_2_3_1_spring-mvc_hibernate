@@ -14,12 +14,12 @@ public class User {
     @Column(name = "surname")
     private String surname;
     @Column(name = "age")
-    private int age;
+    private Integer age;
 
     public User() {
     }
 
-    public User(String name, String surname, int age) {
+    public User(String name, String surname, Integer age) {
         this.name = name;
         this.surname = surname;
         this.age = age;
@@ -29,7 +29,7 @@ public class User {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -49,11 +49,15 @@ public class User {
         this.surname = surname;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public boolean isNullOrEmpty() {
+        return (name.isEmpty() || surname.isEmpty() || age < 1);
     }
 }
